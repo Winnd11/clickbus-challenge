@@ -1,0 +1,2 @@
+INSERT INTO TB_CITY (city, name, slug, state) VALUES ('São Paulo', 'São Paulo', 'sao paulo', 'SP');
+INSERT INTO TB_CITY (city, name, slug, state) VALUES ('Rio De Janeiro', 'Rio De Janeiro', 'rio de janeiro', 'RJ');
