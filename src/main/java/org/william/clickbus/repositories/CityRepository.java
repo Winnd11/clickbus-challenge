@@ -1,13 +1,13 @@
 package org.william.clickbus.repositories;
 
-import jakarta.persistence.Id;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.transaction.annotation.Transactional;
 import org.william.clickbus.entites.City;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface CityRepository extends JpaRepository<City, Long> {
 
@@ -22,4 +22,17 @@ public interface CityRepository extends JpaRepository<City, Long> {
     // Get city by name
     @Query(value = "SELECT * FROM tb_city WHERE name = :name", nativeQuery = true)
     City findCityByName(@Param("name") String name);
+
+    // Update city
+    @Transactional
+    @Modifying
+    @Query(value = "UPDATE tb_city SET name = :name WHERE id = :id", nativeQuery = true)
+    void updateCityByName(@Param("id") Long id, @Param("name") String name);
+
+    // Delete city
+    @Transactional
+    @Modifying
+    @Query(value = "DELETE FROM tb_city WHERE id = :id", nativeQuery = true)
+    void deleteCity(@Param("id") Long id);
+
 }
