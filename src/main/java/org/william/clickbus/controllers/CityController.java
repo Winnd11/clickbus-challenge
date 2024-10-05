@@ -1,9 +1,7 @@
 package org.william.clickbus.controllers;
 
-import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.william.clickbus.entites.City;
@@ -42,5 +40,15 @@ public class CityController {
     @PostMapping(value = "/citycreate")
     public City createCity(@RequestBody City city) {
         return repository.save(city);
+    }
+
+    @PostMapping(value = "/cityupdate")
+    public void updateCity(@RequestBody City request) {
+        repository.updateCityByName(request.getId(), request.getName());
+    }
+
+    @PostMapping(value = "/deletecity/{id}")
+    public void deleteCity(@PathVariable Long id) {
+        repository.deleteCity(id);
     }
 }
