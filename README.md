@@ -14,7 +14,10 @@ PostMan
 git clone https://github.com/Winnd11/clickbus-challenge.git
 ```
 
-2. run main
+2. run maven
+```git
+./mvnw.cmd spring-boot:run
+```
 
 the app will run at http://localhost:5500
 
